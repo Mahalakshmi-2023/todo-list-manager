@@ -15,12 +15,8 @@ def view_tasks():
         status = "Done" if task["done"] else "Pending"
         print(f"{i + 1}. {task['task']} [{status}]")
 
-def delete_task(index):
-    if 0 <= index < len(tasks):
-        removed = tasks.pop(index)
-        print(f"🗑️ Task deleted: {removed['task']}")
-    else:
-        print("❌ Invalid task number")
+def delete_task(tasks, index):
+    tasks.pop(index)  # BUG: no bounds checking
 
 def show_menu():
     print("\n==== To-Do List Manager ====")
