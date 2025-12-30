@@ -16,7 +16,12 @@ def view_tasks():
         print(f"{i + 1}. {task['task']} [{status}]")
 
 def delete_task(tasks, index):
-    tasks.pop(index)  # BUG: no bounds checking
+    if 0 <= index < len(tasks):
+        tasks.pop(index)
+        print("Task deleted successfully")
+    else:
+        print("Invalid task number")
+
 
 def show_menu():
     print("\n==== To-Do List Manager ====")
